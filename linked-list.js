@@ -63,7 +63,7 @@ class LinkedList {
 
   getAt(idx) {
     const currentNode = this.head;
-    for (let i of this.length) {
+    for (let i = 0; i < this.length; i++) {
       currentNode = currentNode.next;
       if (i === idx) {
         return currentNode  
@@ -76,7 +76,7 @@ class LinkedList {
   setAt(idx, val) {
     const currentNode = this.head;
     const newNode = new Node(val);
-    for (let i of this.length) {
+    for (let i = 0; i < this.length; i++) {
       if (i === idx) {
         let nextNode = currentNode.next;
         currentNode = newNode;
@@ -91,7 +91,7 @@ class LinkedList {
   insertAt(idx, val) {
     const currentNode = this.head;
     const newNode = new Node(val);
-    for (let i of this.length) {
+    for (let i = 0; i < this.length; i++) {
       if (i === idx - 1) {
         let nextNode = currentNode.next;
         currentNode = newNode;
@@ -105,7 +105,7 @@ class LinkedList {
 
   removeAt(idx) {
     const currentNode = this.head;
-    for (let i of this.length) {
+    for (let i = 0; i < this.length; i++) {
       if (i === idx - 1) {
         let deleteMe = currentNode.next;
         let nextNode = currentNode.next.next;
@@ -121,7 +121,7 @@ class LinkedList {
   average() {
     let total = 0;
     const currentNode = this.head;
-    for (let i of this.length) {
+    for (let i = 0; i < this.length; i++) {
       total += currentNode.val;
       currentNode = currentNode.next;
     }
