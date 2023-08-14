@@ -15,7 +15,10 @@ class LinkedList {
     this.tail = null;
     this.length = 0;
 
-    for (let val of vals) this.push(val);
+    for (let val of vals) {
+      this.push(val);
+      this.length += 1;
+    }
   }
 
   /** push(val): add new value to end of list. */
@@ -28,6 +31,7 @@ class LinkedList {
     }
     this.tail.next = newNode;
     this.tail = newNode;
+    this.length++
   }
 
   /** unshift(val): add new value to start of list. */
@@ -36,6 +40,7 @@ class LinkedList {
     let newNode = new Node(val);
     newNode.next = this.head;
     this.head = newNode;
+    this.length++
   }
 
   /** pop(): return & remove last item. */
@@ -47,6 +52,7 @@ class LinkedList {
       currentNode = currentNode.next
     }
     this.tail = currentNode.next
+    this.length--
     return deleteMe
   }
 
@@ -56,6 +62,7 @@ class LinkedList {
     let newHead = this.head.next;
     let oldHead = this.head;
     this.head = newHead;
+    this.length--;
     return oldHead;
   }
 
@@ -69,6 +76,7 @@ class LinkedList {
         return currentNode  
       }
     }
+    console.log('ERROR: invalid index')
   }
 
   /** setAt(idx, val): set val at idx to val */
@@ -84,6 +92,7 @@ class LinkedList {
       }
       currentNode = currentNode.next;
     }
+    console.log('ERROR: invalid index')
   }
 
   /** insertAt(idx, val): add node w/val before idx. */
@@ -96,9 +105,11 @@ class LinkedList {
         let nextNode = currentNode.next;
         currentNode = newNode;
         currentNode.next = nextNode;
+        this.length++
       }
       currentNode = currentNode.next;
     }
+    console.log('ERROR: invalid index')
   }
 
   /** removeAt(idx): return & remove item at idx, */
@@ -114,18 +125,19 @@ class LinkedList {
       }
       currentNode = currentNode.next
     }
+    console.log('ERROR: invalid index')
   }
 
   /** average(): return an average of all values in the list */
 
   average() {
     let total = 0;
-    const currentNode = this.head;
+    let currentNode = this.head;
     for (let i = 0; i < this.length; i++) {
       total += currentNode.val;
       currentNode = currentNode.next;
     }
-    return total;
+    return total/this.length;
   }
 }
 
